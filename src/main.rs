@@ -1,4 +1,7 @@
+mod file_detection;
+
 use clap::Parser;
+use file_detection::validate_audio_file;
 
 #[derive(Parser, Debug)]
 #[command(
@@ -23,6 +26,10 @@ fn main() {
 
     match target {
         Some(path) => {
+            if let Err(e) = validate_audio_file(&path) {
+                eprintln!("Error: {e}");
+                std::process::exit(1);
+            }
             println!("Playing: {path}");
             // TODO: implement playback
         }

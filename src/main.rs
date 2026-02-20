@@ -1,6 +1,7 @@
 use clap::Parser;
 
 #[derive(Parser)]
+#[command(version)]
 struct Args {
     #[arg(short = 'f', long = "file")]
     file: String,

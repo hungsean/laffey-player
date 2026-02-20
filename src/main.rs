@@ -1,3 +1,12 @@
+use clap::Parser;
+
+#[derive(Parser)]
+struct Args {
+    #[arg(short = 'f', long = "file")]
+    file: String,
+}
+
 fn main() {
-    println!("Hello, world!");
+    let args: Args = Args::parse();
+    println!("file: {}", args.file);
 }
